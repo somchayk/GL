@@ -1,26 +1,38 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Gl from "./gl/Gl";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+  state = { 
+    gl: [
+      { id: 1, item: 'Appples', type: 'produce', price: '$0.89', complete: false},
+      { id: 2, item: 'Turkey', type: 'meat', price: '$15.00', complete: false},
+      { id: 3, item: 'Hat', type: 'clothes', price: '$6.99', complete: false}
+    ]
+  }
+
+  renderGl () {
+    const { gl } = this.state;
+    return gl.map (g => (
+      < gl key={gl.id} id={gl.id} item={gl.item} type={gl.type} price={gl.price} />
+    ));
+  }
+
+  render () {
+    return (
+      <div>
+        <h1> Welcome To Our Store</h1>
+        {this.renderGl()}
+      </div>
+    );
+  }
+
+
+
+
+
+
+
 }
+
 
 export default App;
