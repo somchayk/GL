@@ -1,23 +1,25 @@
 import React from 'react';
-import Gl from "./gl/Gl";
+import Gl from './gl/Gl';
 
 class App extends React.Component {
   state = { 
-    gl: [
+    groceryList: [
       { id: 1, item: 'Appples', type: 'produce', price: '$0.89', complete: false},
       { id: 2, item: 'Turkey', type: 'meat', price: '$15.00', complete: false},
       { id: 3, item: 'Hat', type: 'clothes', price: '$6.99', complete: false}
     ]
   }
 
-  renderGl () {
-    const { gl } = this.state;
-    return gl.map (g => (
-      < gl key={gl.id} id={gl.id} item={gl.item} type={gl.type} price={gl.price} />
-    ));
+  renderGl() {
+    const { groceryList } = this.state;
+    return(
+      groceryList.map (g => (
+        < Gl key={g.id} id={g.id} item={g.item} type={g.type} price={g.price} />
+        ))
+    )
   }
 
-  render () {
+  render() {
     return (
       <div>
         <h1> Welcome To Our Store</h1>

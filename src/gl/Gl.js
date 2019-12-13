@@ -4,10 +4,7 @@ const Gl = ({ id, item, type, price }) => {
 
   return (
     <div>
-      <h2> {id} </h2>
-      <h2> Item: {item} </h2>
-      <h2> Type: {type} </h2>
-      <h2> Price {price} </h2>
+      <h4> {id}.  Item: {item} - Type: {type} - Price: {price}  </h4>
     </div>
   );
 };
