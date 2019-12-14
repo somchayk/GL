@@ -1,12 +1,12 @@
 import React from "react";
 import Listitem from './Listitem';
 
-const List = ({ item ,handleComplete }) => (
+const List = ({ item, handleComplete }) => (
 
  
 
     <div>
-       {item.map( g => <Listitem key={g.id} {...g} handleComplete = {handleComplete} /> )}
+       {item.map( g => <Listitem key={g.id} {...g} handleComplete={handleComplete} /> )}
     </div>
 
 

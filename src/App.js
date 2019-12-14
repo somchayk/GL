@@ -48,6 +48,7 @@ class App extends React.Component {
         <h1> Welcome To Our Store</h1>
         <List item = {this.state.groceryList} handleComplete = {this.handleComplete}/>
         <ItemForm addItem={this.addItem} />
+        
       </div>
     );
   }

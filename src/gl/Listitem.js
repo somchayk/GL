@@ -12,7 +12,7 @@ const Listitem = ({ id, item, type, price, complete, handleComplete }) => (
     style={ complete ? { ...styles.complete } : {} }
     onClick={() => handleComplete(id)}
   >
-    { item }
+    { item } - { price }
   </li>
 )
 
