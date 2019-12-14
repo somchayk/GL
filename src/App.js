@@ -1,5 +1,7 @@
 import React from 'react';
-import Gl from './gl/Gl';
+import List from './gl/List';
+import Listitem from './gl/Listitem';
+import ItemForm from './gl/ItemForm';
 
 class App extends React.Component {
   state = { 
@@ -10,20 +12,42 @@ class App extends React.Component {
     ]
   }
 
-  renderGl() {
-    const { groceryList } = this.state;
-    return(
-      groceryList.map (g => (
-        < Gl key={g.id} id={g.id} item={g.item} type={g.type} price={g.price} />
-        ))
-    )
+  handleComplete = (id) => {
+    const { groceryList } = this.state
+    this.setState({
+      groceryList: groceryList.map( groceryList => {
+        if (groceryList.id === id) {
+          return {
+            ...groceryList, 
+            complete: !groceryList.complete
+          }
+        }
+        return groceryList 
+      })
+    })
   }
+
+
+
+  getUniqId = () => {
+    return Math.floor((1 + Math.random()) * 0x10000)
+      .toString(16)
+      .substring(1);
+  }
+
+  addItem = (incomingItem) => {
+    const { groceryList }  = this.state;
+    const newItem = { id: this.getUniqId(), ...incomingItem }
+    this.setState({ groceryList: [newItem, ...groceryList] })
+  }
+
 
   render() {
     return (
       <div>
         <h1> Welcome To Our Store</h1>
-        {this.renderGl()}
+        <List item = {this.state.groceryList} handleComplete = {this.handleComplete}/>
+        <ItemForm addItem={this.addItem} />
       </div>
     );
   }
