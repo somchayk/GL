@@ -2,6 +2,7 @@ import React from 'react';
 import List from './gl/List';
 import Listitem from './gl/Listitem';
 import ItemForm from './gl/ItemForm';
+import './App.css';
 
 class App extends React.Component {
   state = { 
@@ -45,13 +46,16 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <h1> Welcome To Our Store</h1>
+        <h1 style={{color: "yellow", backgroundColor: "grey"}}> Welcome To Our Store</h1>
         <List item = {this.state.groceryList} handleComplete = {this.handleComplete}/>
         <ItemForm addItem={this.addItem} />
-        
+
       </div>
     );
   }
+
+
+  
 
 
 
