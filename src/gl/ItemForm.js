@@ -1,7 +1,7 @@
 import React, { Component} from 'react';
 
 class ItemForm extends Component {
-  state = { item: '' }
+  state = { item: '', type: '', price: '' }
 
   handleChange = (e) => {
     this.setState({ item: e.target.value });
@@ -10,11 +10,11 @@ class ItemForm extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
     this.props.addItem(this.state)
-    this.setState({ item: '' })
+    this.setState({ item: '',  type: '', price: ''})
   }
 
   render(){
-    const { item } = this.state;
+    const { item, type, price } = this.state;
     return (
       <form onSubmit={this.handleSubmit}>
         <input
@@ -24,6 +24,21 @@ class ItemForm extends Component {
           required 
           placeholder="Add An Item"
          />
+        <input
+          value={this.state.type}
+          name='type'
+          onChange={this.handleChange}
+          required 
+          placeholder="What kind of item is this?"
+         />
+        <input
+          value={this.state.price}
+          name='price'
+          onChange={this.handleChange}
+          required 
+          placeholder="How much did this cost?"
+         />
+         <input type='Submit' />
       </form>
     )
   }

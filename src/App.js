@@ -47,8 +47,9 @@ class App extends React.Component {
     return (
       <div>
         <h1 style={{color: "yellow", backgroundColor: "grey"}}> Welcome To Our Store</h1>
-        <List item = {this.state.groceryList} handleComplete = {this.handleComplete}/>
         <ItemForm addItem={this.addItem} />
+        <List item = {this.state.groceryList} handleComplete = {this.handleComplete}/>
+       
 
       </div>
     );
