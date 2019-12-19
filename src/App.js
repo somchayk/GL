@@ -42,14 +42,22 @@ class App extends React.Component {
     this.setState({ groceryList: [newItem, ...groceryList] })
   }
 
+  deleteItem = (id) => {
+    const newItem = this.state.groceryList.filter ( item => {
+      if (item.id !== id)
+        return item
+    })
+    this.setState({ groceryList: [...newItem] })
+  }
+
 
   render() {
     return (
       <div>
         <h1 style={{color: "yellow", backgroundColor: "grey"}}> Welcome To Our Store</h1>
         <ItemForm addItem={this.addItem} />
-        <List item = {this.state.groceryList} handleComplete = {this.handleComplete}/>
-       
+        <List item = {this.state.groceryList} handleComplete = {this.handleComplete} deleteItem={this.deleteItem}/>
+          
 
       </div>
     );

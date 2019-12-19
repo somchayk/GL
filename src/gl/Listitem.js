@@ -7,12 +7,13 @@ const styles = {
   }
 }
 
-const Listitem = ({ id, item, type, price, complete, handleComplete }) => (
+const Listitem = ({ id, item, type, price, complete, handleComplete, deleteItem }) => (
   <li 
     style={ complete ? { ...styles.complete } : {} }
     onClick={() => handleComplete(id)}
   >
     { item } - { price }
+    <button onClick={() => deleteItem(id)}>Delete</button>
   </li>
 )
 

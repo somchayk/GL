@@ -1,20 +1,21 @@
-import React, { Component} from 'react';
+import React, { Component } from 'react';
 
 class ItemForm extends Component {
-  state = { item: '', type: '', price: '' }
+  state = { item: '', price: '' }
 
   handleChange = (e) => {
-    this.setState({ item: e.target.value });
+    const { name, value } = e.target
+    this.setState({ [name]: value })
   }
 
   handleSubmit = (e) => {
     e.preventDefault();
     this.props.addItem(this.state)
-    this.setState({ item: '',  type: '', price: ''})
+    this.setState({ item: '', price: '' })
   }
 
   render(){
-    const { item, type, price } = this.state;
+    const { item, price } = this.state;
     return (
       <form onSubmit={this.handleSubmit}>
         <input
@@ -23,22 +24,15 @@ class ItemForm extends Component {
           onChange={this.handleChange}
           required 
           placeholder="Add An Item"
-         />
-        <input
-          value={this.state.type}
-          name='type'
-          onChange={this.handleChange}
-          required 
-          placeholder="What kind of item is this?"
-         />
+          />
         <input
           value={this.state.price}
           name='price'
           onChange={this.handleChange}
           required 
-          placeholder="How much did this cost?"
-         />
-         <input type='Submit' />
+          placeholder="How much did it cost?"
+          />
+          <button>Submit</button>
       </form>
     )
   }
